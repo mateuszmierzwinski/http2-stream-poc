@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Push Notifications test</title>
+</head>
+<body>
+    <h2>This is push notifications test using different HTTP/2 methods</h2>
+
+    <h3>HTTP2 stream read</h3>
+    <div id="streamread"></div>
+
+    <h3>WebSockets</h3>
+    <div id="websocketsread"></div>
+
+    <h3>WebWorkers</h3>
+    <div id="webworkersread"></div>
+
+    <script type="text/javascript">
+        function uintToString(uintArray) {
+            var encodedString = String.fromCharCode.apply(null, uintArray),
+                    decodedString = decodeURIComponent(escape(encodedString));
+            return decodedString;
+        }
+
+        handleStreamRead = function() {
+            const streamread = document.getElementById('streamread');
+            streamread.innerText = "Waiting for Stream SSE event";
+
+            fetch('/api/stream')
+                .then(response => response.body)
+                .then(rs => {
+                    const reader = rs.getReader()
+
+                    return new ReadableStream({
+                        async start(controller) {
+                            while (true) {
+                                const { done, value } = await reader.read();
+                                streamread.innerText = uintToString(value);
+                                if (done) {
+                                    break;
+                                }
+                                controller.enqueue(value);
+                            }
+                            controller.close();
+                            reader.releaseLock();
+                        }
+                    })
+                })
+                .catch(console.error);
+        }
+
+        handleWebSockets = function () {
+            const socket = new WebSocket('wss://localhost:8443/ws');
+
+            const websocketsread = document.getElementById('websocketsread');
+
+            socket.addEventListener('open', function(event) {
+                websocketsread.innerText = "Waiting for websocket messages"
+            });
+
+            socket.addEventListener('close', function(event){
+                websocketsread.innerText = "Websocket closed"
+            });
+
+            socket.addEventListener('message', function(event) {
+                websocketsread.innerText = event.data;
+            });
+        }
+
+        handleWorker = function() {
+            var myWorker = new Worker('worker.js');
+
+            const webworkersread = document.getElementById('webworkersread')
+            webworkersread.innerText = "Waiting for background worker";
+            myWorker.onmessage = function(event) {
+                webworkersread.innerText = uintToString(event.data.value);
+            };
+        }
+
+        handleWorker();
+        handleStreamRead();
+        handleWebSockets();
+    </script>
+</body>
+</html>
