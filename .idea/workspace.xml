@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="33a8d962-9fea-4569-881a-244ae6e8f482" name="Default Changelist" comment="" />
+    <list default="true" id="33a8d962-9fea-4569-881a-244ae6e8f482" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/http2push-linux-amd64" beforeDir="false" afterPath="$PROJECT_DIR$/http2push-linux-amd64" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/http2push-linux-arm32" beforeDir="false" afterPath="$PROJECT_DIR$/http2push-linux-arm32" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/http2push-linux-arm64" beforeDir="false" afterPath="$PROJECT_DIR$/http2push-linux-arm64" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/http2push-osx-amd64" beforeDir="false" afterPath="$PROJECT_DIR$/http2push-osx-amd64" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/http2push-win32.exe" beforeDir="false" afterPath="$PROJECT_DIR$/http2push-win32.exe" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -34,7 +45,6 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="go.import.settings.migrated" value="true" />
     <property name="node.js.detected.package.eslint" value="true" />
